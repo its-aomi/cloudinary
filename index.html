@@ -8,7 +8,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #dropbox { 
-  border: 4px solid #ccc; 
+  border: none; 
   padding-left: 8px;
   height: 200px;
   border-radius: 5px;
@@ -173,13 +173,13 @@ var handleFiles = function (files) {
   <div id="dropbox">
   <form class="my-form">
     <div class="form_line">
-      <h4>Drag & Drop the Images or Click Select Images Button</h4>
+      <h4>Click Select Images Button & Select the Images</h4>
       <div class="form_controls">
         <div class="upload_button_holder">
           <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
           <a href="#" id="fileSelect">Select Images</a>&nbsp;&nbsp;
           <a href="#" style="display:none;" id="urlSelect">URL Upload</a>
-          <a href="/process.html" id="nextSelect">Images Uploaded?? Next Step</a>
+          <a href="https://its-aomi.github.io/cloudinary/process.html" id="nextSelect">Images Uploaded?? Next Step</a>
         </div>
       </div>
     </div>
