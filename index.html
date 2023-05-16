@@ -95,79 +95,6 @@ h4{
     color: #eee;
 }
   </style>
-  <script type="module">
-    const cloudName = 'dkaxmhco0';
-const unsignedUploadPreset = 'lqt0ve5g';
-var fileSelect = document.getElementById("fileSelect"),
-fileElem = document.getElementById("fileElem"),
-urlSelect = document.getElementById("urlSelect");
-fileSelect.addEventListener("click", function (e) {
-  if (fileElem) {
-    fileElem.click();
-  }
-  e.preventDefault();
-}, false);
-urlSelect.addEventListener("click", function (e) {
-  uploadFile('https://res.cloudinary.com/dkaxmhco0/image/upload/sample.jpg');
-  e.preventDefault();
-}, false);
-function dragenter(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
-function dragover(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
-dropbox = document.getElementById("dropbox");
-dropbox.addEventListener("dragenter", dragenter, false);
-dropbox.addEventListener("dragover", dragover, false);
-dropbox.addEventListener("drop", drop, false);
-function drop(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  var dt = e.dataTransfer;
-  var files = dt.files;
-  handleFiles(files);
-}
-function uploadFile(file) {
-  var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-  var xhr = new XMLHttpRequest();
-  var fd = new FormData();
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  document.getElementById('progress').style.width = 0;
-  xhr.upload.addEventListener("progress", function (e) {
-    var progress = Math.round(e.loaded * 100.0 / e.total);
-    document.getElementById('progress').style.width = progress + "%";
-
-    console.log(`fileuploadprogress data.loaded: ${e.loaded},
-  data.total: ${e.total}`);
-  });
-
-  xhr.onreadystatechange = function (e) {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var response = JSON.parse(xhr.responseText);
-      var url = response.secure_url;
-      var tokens = url.split('/');
-      tokens.splice(-2, 0, 'w_1080,h_1920,c_fill');
-      var img = new Image();
-      img.src = tokens.join('/');
-      img.alt = response.public_id;
-      document.getElementById('gallery').appendChild(img);
-    }
-  };
-  fd.append('upload_preset', unsignedUploadPreset);
-  fd.append('tags', 'browser_upload');
-  fd.append('file', file);
-  xhr.send(fd);
-}
-var handleFiles = function (files) {
-  for (var i = 0; i < files.length; i++) {
-    uploadFile(files[i]);
-  }
-};
-  </script>
 </head>
 <body>
   <div id="dropbox">
@@ -190,5 +117,78 @@ var handleFiles = function (files) {
   <div id="gallery" />
 </div>
 </div>
+<script>
+  const cloudName = 'dkaxmhco0';
+const unsignedUploadPreset = 'lqt0ve5g';
+var fileSelect = document.getElementById("fileSelect"),
+fileElem = document.getElementById("fileElem"),
+urlSelect = document.getElementById("urlSelect");
+fileSelect.addEventListener("click", function (e) {
+if (fileElem) {
+  fileElem.click();
+}
+e.preventDefault();
+}, false);
+urlSelect.addEventListener("click", function (e) {
+uploadFile('https://res.cloudinary.com/dkaxmhco0/image/upload/sample.jpg');
+e.preventDefault();
+}, false);
+function dragenter(e) {
+e.stopPropagation();
+e.preventDefault();
+}
+function dragover(e) {
+e.stopPropagation();
+e.preventDefault();
+}
+dropbox = document.getElementById("dropbox");
+dropbox.addEventListener("dragenter", dragenter, false);
+dropbox.addEventListener("dragover", dragover, false);
+dropbox.addEventListener("drop", drop, false);
+function drop(e) {
+e.stopPropagation();
+e.preventDefault();
+var dt = e.dataTransfer;
+var files = dt.files;
+handleFiles(files);
+}
+function uploadFile(file) {
+var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+var xhr = new XMLHttpRequest();
+var fd = new FormData();
+xhr.open('POST', url, true);
+xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+document.getElementById('progress').style.width = 0;
+xhr.upload.addEventListener("progress", function (e) {
+  var progress = Math.round(e.loaded * 100.0 / e.total);
+  document.getElementById('progress').style.width = progress + "%";
+
+  console.log(`fileuploadprogress data.loaded: ${e.loaded},
+data.total: ${e.total}`);
+});
+
+xhr.onreadystatechange = function (e) {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    var response = JSON.parse(xhr.responseText);
+    var url = response.secure_url;
+    var tokens = url.split('/');
+    tokens.splice(-2, 0, 'w_1080,h_1920,c_fill');
+    var img = new Image();
+    img.src = tokens.join('/');
+    img.alt = response.public_id;
+    document.getElementById('gallery').appendChild(img);
+  }
+};
+fd.append('upload_preset', unsignedUploadPreset);
+fd.append('tags', 'browser_upload');
+fd.append('file', file);
+xhr.send(fd);
+}
+var handleFiles = function (files) {
+for (var i = 0; i < files.length; i++) {
+  uploadFile(files[i]);
+}
+};
+</script>
 </body>
 </html>
