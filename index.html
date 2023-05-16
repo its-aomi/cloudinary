@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Image</title>
+  <style>
+    body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#dropbox { 
+  border: 4px solid #ccc; 
+  padding-left: 8px;
+  height: 200px;
+  border-radius: 5px;
+}
+.my-form {
+  margin-top: 10px;
+}
+.gallery {
+  margin: 10px;
+}
+.gallery img {
+  margin-left: 16px;
+}
+#gallery img {
+    width: 150px;
+    height: auto;
+    padding: 50px;
+    border: 2px solid #eee;
+}
+.progress-bar{
+  width: 200px;
+  position: relative;
+  height: 8px;
+  margin-top: 100px;
+}
+.progress-bar .progress{
+  height: 8px;
+  background-color: #ff0000;
+  width: 0;
+}
+   #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    #gallery img {
+      width: 150px; /* Adjust the width as needed */
+      height: auto; /* Adjust the height as needed */
+    }
+
+h4{
+    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+#fileSelect{
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #eee;
+}
+#fileSelect:hover{
+    background-color: #eee;
+    color: #212121;
+    border: 2px solid #212121;
+}
+.upload_button_holder {
+  display: flex;
+  justify-content: center;
+}
+#urlSelect{
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #212121;
+}
+#urlSelect:hover{
+    background-color: #212121;
+    color: #eee;
+}
+#nextSelect{
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #212121;
+}
+#nextSelect:hover{
+    background-color: #212121;
+    color: #eee;
+}
+  </style>
+  <script type="module">
+    const cloudName = 'dkaxmhco0';
+const unsignedUploadPreset = 'lqt0ve5g';
+var fileSelect = document.getElementById("fileSelect"),
+fileElem = document.getElementById("fileElem"),
+urlSelect = document.getElementById("urlSelect");
+fileSelect.addEventListener("click", function (e) {
+  if (fileElem) {
+    fileElem.click();
+  }
+  e.preventDefault();
+}, false);
+urlSelect.addEventListener("click", function (e) {
+  uploadFile('https://res.cloudinary.com/dkaxmhco0/image/upload/sample.jpg');
+  e.preventDefault();
+}, false);
+function dragenter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+function dragover(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+dropbox = document.getElementById("dropbox");
+dropbox.addEventListener("dragenter", dragenter, false);
+dropbox.addEventListener("dragover", dragover, false);
+dropbox.addEventListener("drop", drop, false);
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  var dt = e.dataTransfer;
+  var files = dt.files;
+  handleFiles(files);
+}
+function uploadFile(file) {
+  var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+  var xhr = new XMLHttpRequest();
+  var fd = new FormData();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  document.getElementById('progress').style.width = 0;
+  xhr.upload.addEventListener("progress", function (e) {
+    var progress = Math.round(e.loaded * 100.0 / e.total);
+    document.getElementById('progress').style.width = progress + "%";
+
+    console.log(`fileuploadprogress data.loaded: ${e.loaded},
+  data.total: ${e.total}`);
+  });
+
+  xhr.onreadystatechange = function (e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+      var url = response.secure_url;
+      var tokens = url.split('/');
+      tokens.splice(-2, 0, 'w_1080,h_1920,c_fill');
+      var img = new Image();
+      img.src = tokens.join('/');
+      img.alt = response.public_id;
+      document.getElementById('gallery').appendChild(img);
+    }
+  };
+  fd.append('upload_preset', unsignedUploadPreset);
+  fd.append('tags', 'browser_upload');
+  fd.append('file', file);
+  xhr.send(fd);
+}
+var handleFiles = function (files) {
+  for (var i = 0; i < files.length; i++) {
+    uploadFile(files[i]);
+  }
+};
+  </script>
+</head>
+<body>
+  <div id="dropbox">
+  <form class="my-form">
+    <div class="form_line">
+      <h4>Drag & Drop the Images or Click Select Images Button</h4>
+      <div class="form_controls">
+        <div class="upload_button_holder">
+          <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+          <a href="#" id="fileSelect">Select Images</a>&nbsp;&nbsp;
+          <a href="#" style="display:none;" id="urlSelect">URL Upload</a>
+          <a href="/process.html" id="nextSelect">Images Uploaded?? Next Step</a>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress" id="progress"></div>
+  </div>
+  <div id="gallery" />
+</div>
+</div>
+</body>
+</html>

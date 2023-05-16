@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Process Text File</title>
+        <style>
+        body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h4{
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#txtFileInput{
+    padding: 20px;
+    background-color: #212121;
+    color: #eee;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+button{
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: #212121;
+    color: #eee;
+    cursor: pointer;
+}
+p#cloudinaryURL {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 374px;
+    background-color: #eee;
+}
+
+p#cloudinaryURL a{
+    color: #212121;
+    text-decoration: none;
+}
+
+p#cloudinaryURL:hover {
+    background-color: #212121;
+}
+p#cloudinaryURL:hover a {
+    color: #eee;
+}
+        </style>
+        <script type="module">
+            function processFile() {
+  const fileInput = document.getElementById('txtFileInput');
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      const content = event.target.result;
+      const lines = content.split('\n');
+
+      if (lines.length >= 20) {
+        // Assuming the file has 10 image names and 10 descriptions
+        const imageNames = [];
+        const descriptions = [];
+
+        for (let i = 0; i < 10; i++) {
+          const imageName = lines[i * 2].trim();
+          const description = lines[i * 2 + 1].trim();
+
+          imageNames.push(imageName);
+          descriptions.push(description);
+        }
+
+        const cloudinaryURL = 'https://res.cloudinary.com/dkaxmhco0/video/upload/fn_render:fps_25;vars_(';
+
+        // Build the title and image variables for Cloudinary URL
+        let titleVariables = '';
+        let imageVariables = '';
+
+        for (let i = 0; i < 10; i++) {
+          const titleVar = `title${i + 1}_${descriptions[i]}`;
+          const imageVar = `image${i + 1}_${imageNames[i]}`;
+
+          titleVariables += `${titleVar};`;
+          imageVariables += `${imageVar};`;
+        }
+
+        const finalURL = `${cloudinaryURL}${imageVariables}${titleVariables})/final-1.mp4`;
+
+        // Create a link button to download the video
+        const downloadButton = document.createElement('a');
+        downloadButton.href = finalURL;
+        downloadButton.textContent = 'Download Video';
+
+        // Display the download button in the frontend
+        const cloudinaryURLDisplay = document.getElementById('cloudinaryURL');
+        cloudinaryURLDisplay.innerHTML = '';
+        cloudinaryURLDisplay.appendChild(downloadButton);
+      } else {
+        console.log('Invalid file format. The file should contain 10 image names and 10 descriptions.');
+      }
+    };
+
+    reader.readAsText(file);
+  } else {
+    console.log('No file selected.');
+  }
+}
+
+        </script>
+	</head>
+	<body>
+        <h4>Select the txt file then Click Get Url</h4>
+        <div class="buttons">
+        <input type="file" id="txtFileInput" accept=".txt">
+<button onclick="processFile()">Process File</button>
+        </div>
+<p id="cloudinaryURL"></p>
+	</body>
+</html>
