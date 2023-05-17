@@ -74,53 +74,35 @@ for (var i = 0; i < files.length; i++) {
 function processFile() {
   const fileInput = document.getElementById('txtFileInput');
   const file = fileInput.files[0];
-
   if (file) {
     const reader = new FileReader();
-
     reader.onload = function(event) {
       const content = event.target.result;
       const lines = content.split('\n');
-
       if (lines.length >= 20) {
-        // Assuming the file has 10 image names and 10 descriptions
         const imageNames = [];
         const descriptions = [];
-
         for (let i = 0; i < 10; i++) {
-          const imageName = lines[i * 2].trim();
-          const description = lines[i * 2 + 1].trim();
-
-          // Convert special characters to URL-encoded format
+          const imageName = lines[i * 2].trim() || '%20';
+          const description = lines[i * 2 + 1].trim() || '%20';
           const encodedImageName = imageName.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%3F');
           const encodedDescription = description.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%3F');
-
           imageNames.push(encodedImageName);
           descriptions.push(encodedDescription);
         }
-
         const cloudinaryURL = 'https://res.cloudinary.com/dkaxmhco0/video/upload/fn_render:fps_25;vars_(';
-
-        // Build the title and image variables for Cloudinary URL
         let titleVariables = '';
         let imageVariables = '';
-
         for (let i = 0; i < 10; i++) {
           const titleVar = `title${i + 1}_${descriptions[i]}`;
           const imageVar = `image${i + 1}_${imageNames[i]}`;
-
           titleVariables += `${titleVar};`;
           imageVariables += `${imageVar};`;
         }
-
-        const finalURL = `${cloudinaryURL}${imageVariables}${titleVariables})/final-1.mp4`;
-
-        // Create a link button to download the video
+        const finalURL = `${cloudinaryURL}${imageVariables}${titleVariables})/l_audio:audio_1/final-1.mp4`;
         const downloadButton = document.createElement('a');
         downloadButton.href = finalURL;
         downloadButton.textContent = 'Download Video';
-
-        // Display the download button in the frontend
         const cloudinaryURLDisplay = document.getElementById('cloudinaryURL');
         cloudinaryURLDisplay.innerHTML = '';
         cloudinaryURLDisplay.appendChild(downloadButton);
@@ -131,6 +113,6 @@ function processFile() {
 
     reader.readAsText(file);
   } else {
-    alert('Please Select a Text File.');
+    alert('No file selected.');
   }
-}  
+}
