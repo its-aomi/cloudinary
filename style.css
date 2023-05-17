@@ -1,0 +1,151 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#dropbox { 
+  border: none; 
+  padding-left: 8px;
+  height: 200px;
+  border-radius: 5px;
+  
+}
+.my-form {
+  margin-top: -60px;
+}
+.gallery {
+  margin: 10px;
+}
+.gallery img {
+  margin-left: 16px;
+}
+#gallery img {
+    width: 100px;
+    height: auto;
+    padding: 20px;
+    border: 2px solid #eee;
+}
+.progress-bar{
+  width: 200px;
+  position: relative;
+  height: 8px;
+  margin-top: 30px;
+}
+.progress-bar .progress{
+  height: 8px;
+  background-color: #ff0000;
+  width: 0;
+}
+   #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    #gallery img {
+      width: 100px;
+      height: auto;
+    }
+
+h4{
+    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+#fileSelect {
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #eee;
+    text-align: center;
+    width: 350px;
+}
+#fileSelect:hover{
+    background-color: #eee;
+    color: #212121;
+    border: 2px solid #212121;
+}
+.upload_button_holder {
+  display: flex;
+  justify-content: center;
+}
+#urlSelect{
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #212121;
+}
+#urlSelect:hover{
+    background-color: #212121;
+    color: #eee;
+}
+#nextSelect{
+    background-color: #eee;
+    display: none;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #212121;
+}
+#nextSelect:hover{
+    background-color: #212121;
+    color: #eee;
+}
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h4{
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#txtFileInput{
+    padding: 20px;
+    background-color: #212121;
+    color: #eee;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+button{
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: #212121;
+    color: #eee;
+    cursor: pointer;
+}
+p#cloudinaryURL {
+    display: flex;
+    justify-content: center;
+}
+
+p#cloudinaryURL a{
+    color: #212121;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 360px;
+    background-color: #eee;
+    text-align: center;
+}
+
+p#cloudinaryURL a:hover {
+    background-color: #212121;
+}
+p#cloudinaryURL a:hover {
+    color: #eee;
+}
+.second {
+    margin-top: -60px;
+}
