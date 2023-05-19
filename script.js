@@ -1,5 +1,5 @@
-const cloudName = 'dkaxmhco0';
-const unsignedUploadPreset = 'lqt0ve5g';
+const cloudName = 'dj8ailkti';
+const unsignedUploadPreset = 'crkxuvtv';
 var fileSelect = document.getElementById("fileSelect"),
 fileElem = document.getElementById("fileElem"),
 urlSelect = document.getElementById("urlSelect");
@@ -10,7 +10,7 @@ if (fileElem) {
 e.preventDefault();
 }, false);
 urlSelect.addEventListener("click", function (e) {
-uploadFile('https://res.cloudinary.com/dkaxmhco0/image/upload/sample.jpg');
+uploadFile('https://res.cloudinary.com/dj8ailkti/image/upload/sample.jpg');
 e.preventDefault();
 }, false);
 function dragenter(e) {
@@ -85,12 +85,12 @@ function processFile() {
         for (let i = 0; i < 10; i++) {
           const imageName = lines[i * 2].trim() || '%20';
           const description = lines[i * 2 + 1].trim() || '%20';
-          const encodedImageName = imageName.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%3F');
-          const encodedDescription = description.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%3F');
+          const encodedImageName = imageName.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%253F');
+          const encodedDescription = description.replace(/,/g, '%E2%80%9A').replace(/\?/g, '%253F');
           imageNames.push(encodedImageName);
           descriptions.push(encodedDescription);
         }
-        const cloudinaryURL = 'https://res.cloudinary.com/dkaxmhco0/video/upload/fn_render:fps_25;vars_(';
+        const cloudinaryURL = 'https://res.cloudinary.com/dj8ailkti/video/upload/fn_render:fps_25;vars_(';
         let titleVariables = '';
         let imageVariables = '';
         for (let i = 0; i < 10; i++) {
@@ -99,7 +99,7 @@ function processFile() {
           titleVariables += `${titleVar};`;
           imageVariables += `${imageVar};`;
         }
-        const finalURL = `${cloudinaryURL}${imageVariables}${titleVariables})/l_audio:audio_1/final-1.mp4`;
+        const finalURL = `${cloudinaryURL}${imageVariables}${titleVariables})/l_audio:audio_1/main-video.mp4`;
         const downloadButton = document.createElement('a');
         downloadButton.href = finalURL;
         downloadButton.textContent = 'Download Video';

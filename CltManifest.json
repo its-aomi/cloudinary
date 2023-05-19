@@ -1,0 +1,237 @@
+{
+  "type": "video",
+  "width": 720,
+  "height": 1280,
+  "duration": 30,
+  "fps": 30,
+  "vars": {
+    "image1": "videogen/sport/runner_front_a",
+    "image2": "videogen/sport/runner_front_b",
+    "image3": "videogen/sport/runner_front_c",
+    "image4": "videogen/sport/runner_front_d",
+    "image5": "videogen/sport/runner_front_e",
+    "image6": "videogen/sport/runner_front_f",
+    "image7": "videogen/sport/runner_front_g",
+    "image8": "videogen/sport/runner_front_h",
+    "image9": "videogen/sport/runner_front_i",
+    "image10": "videogen/sport/runner_front_j",
+    "title1": "Hi There This is a very long text line that is long and long!!",
+    "title2": "This is a Video",
+    "title3": "Made using Cloudinary",
+    "title4": "It contains text and images a",
+    "title5": "It contains text and images b",
+    "title6": "It contains text and images c",
+    "title7": "It contains text and images d",
+    "title8": "It contains text and images e",
+    "title9": "It contains text and images f",
+    "title10": "It contains text and images g"
+  },
+  "tracks": [
+    {
+      "clipDefaults": {
+        "clipEffect": {
+            "name": "KenBurns",
+            "easing": "easeout",
+            "zoom": 1.1,
+            "center": [
+              0.5,
+              0.5
+            ],
+            "direction": "backward"
+          }
+      },
+      "clips": [
+        {
+          "nested": "scene1",
+          "type": "nested",
+        "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "windowslice"
+        },
+        {
+          "nested": "scene2",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "BowTieVertical"
+        },
+        {
+          "nested": "scene3",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "wipeRight"
+        },
+        {
+          "nested": "scene4",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "InvertedPageCurl"
+        },
+        {
+          "nested": "scene5",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "windowslice"
+        },
+        {
+          "nested": "scene6",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "BowTieVertical"
+        },
+        {
+          "nested": "scene7",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "wipeRight"
+        },
+        {
+          "nested": "scene8",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "InvertedPageCurl"
+        },
+        {
+          "nested": "scene9",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "windowslice"
+        },
+        {
+          "nested": "scene10",
+          "type": "nested",
+          "clipDuration": 2000,
+        "transitionDuration": 1000,
+        "transition": "BowTieVertical"
+        }
+      ]
+    }
+  ],
+  "scene1": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image1}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title1}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene2": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image2}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title2}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene3": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image3}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title3}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene4": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image4}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title4}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene5": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image5}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title5}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene6": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image6}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title6}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene7": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image7}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title7}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene8": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image8}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title8}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene9": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image9}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title9}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ],
+  "scene10": [
+    {
+      "clips": [
+        {
+          "clipDuration": 2000,
+          "media": "{{image10}}",
+          "type": "image",
+          "transformation": "c_fill/w_600,c_fit,co_white,l_text:Lato_50_center:{{title10}}/e_outline:4,co_212121/g_center,fl_layer_apply"
+        }
+      ]
+    }
+  ]
+}
